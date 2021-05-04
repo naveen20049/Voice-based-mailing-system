@@ -24,7 +24,7 @@ finally:
 
 
 # default values
-calling_word = 'jarvis'
+calling_word = 'naveen'
 emailID = "chennaiprince66@gmail.com"
 password = "9092680809@a"
 
