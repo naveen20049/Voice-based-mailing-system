@@ -31,13 +31,14 @@ password = "9092680809@a"
 
 #voice recognition part
 r=sr.Recognizer()
-r.pause_threshold = 1.0
-r.energy_threshold = 4000
+r.pause_threshold = 0.5
+r.energy_threshold = 2000
 r.dynamic_energy_threshold = True
 
 #login from os
 login = os.getlogin
 print ("You are logging from : "+login())
+
 
 
 def speak(text):
@@ -70,6 +71,7 @@ def listening():
 # Acknowlegment function
 def ackno(i):
     print("Shall i continue : (Yes/No) : ")
+    speak("Shall i continue : Yes or No ")
     text = listening().lower()
     if 'no' in text:
         return False
@@ -77,6 +79,7 @@ def ackno(i):
         return True
     else:
         print("Wrong Option!! \nTry Again......")
+        speak("Wrong Option!! \n Try Again ")
         if i<3:
             ackno(i+1)
         else:
@@ -130,6 +133,7 @@ def getVictimMailID():
         print(mailId)
     mailId = mailId + "@gmail.com"
     print(f"\n\nThe MailId is : {mailId}")
+    
     if ackno(2):
         return mailId
 
@@ -145,8 +149,10 @@ def composemail():
     msg , subject = '', ''
     while True:
         print ("Your subject :")
+        speak("say Your subject please ")
         subject = listening()
         print ("You said : "+subject)
+
         if ackno(0):
             break
 
@@ -154,6 +160,7 @@ def composemail():
         print ("Your message :")
         msg = listening()
         print ("You said : "+msg)
+
         if ackno(0):
             break
 
@@ -164,7 +171,7 @@ def composemail():
     reciverid = getVictimMailID()
     mail.sendmail(emailID,reciverid,message) #send part
     print ("Congrates! Your mail has send. ")
-    # speak("Congrates! Your mail has send. ")
+    speak("Congrates! Your mail has send. ")
     mail.close()
 
 
