@@ -116,7 +116,7 @@ def call():
 
 def getVictimMailID():
     mailId = ''
-    print("please spell out the mailid letter by letter and say `done` when completed")
+    print("please spell out the mailid word by word and say `done` when completed")
     print("And mail will be appended with `@gmail.com` automatically")
 
     speak("please spell out the mailid word by word and say done when completed")
