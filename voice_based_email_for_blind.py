@@ -79,7 +79,7 @@ def ackno(i):
         return True
     else:
         print("Wrong Option!! \nTry Again......")
-        speak("Wrong Option!! \n Try Again ")
+        speak("Wrong Option \n Try Again ")
         if i<3:
             ackno(i+1)
         else:
@@ -90,24 +90,25 @@ def ackno(i):
 def call():
      text = listening().lower()
      if calling_word.lower() in text:
-         print("Composed a mail.")
-         print("Check your inbox")
+         print("Composed a mail")
+         print("read inbox")
 
          speak("Option 1. Composed a mail.")
-         speak("Option 2. Check your inbox")
+         speak("Option 2. read inbox ")
          speak("What do you want to do ?")
          for i in range(0,3):
              x = listening().lower()
              if 'compose' in x:
                  composemail()
                  break
-             elif 'read inbox' in x:
+             elif 'read inbox' in x :
                  readmail()
                  break
              elif 'quit' in text or 'exit' in text or 'close' in text:
                  exit(0)
              else:
                  print("Wrong Option!!!!!.....Try Again")
+                 speak("Wrong Option \n Try Again ")
      elif 'quit' in text or 'exit' in text or 'close' in text:
          exit(0)
      else:
@@ -117,6 +118,9 @@ def getVictimMailID():
     mailId = ''
     print("please spell out the mailid letter by letter and say `done` when completed")
     print("And mail will be appended with `@gmail.com` automatically")
+
+    speak("please spell out the mailid word by word and say done when completed")
+    speak("And mail will be appended with @gmail.com automatically")
     while True:
         char = listening()
         if "done" in char.lower():
@@ -129,11 +133,12 @@ def getVictimMailID():
             mailId = mailId + char[0].lower()
         else:
                 print("Try Again:")
+                speak("Try Again")
                 continue
         print(mailId)
     mailId = mailId + "@gmail.com"
     print(f"\n\nThe MailId is : {mailId}")
-    
+
     if ackno(2):
         return mailId
 
@@ -158,6 +163,7 @@ def composemail():
 
     while True:
         print ("Your message :")
+        speak("say your body of the message")
         msg = listening()
         print ("You said : "+msg)
 
@@ -168,6 +174,10 @@ def composemail():
 
         {msg}."""
 
+    print("To whom you what to send the mail")
+    print("Say the mail I D")
+    speak("To whom you what to send the mail")
+    speak("Say the mail I D")
     reciverid = getVictimMailID()
     mail.sendmail(emailID,reciverid,message) #send part
     print ("Congrates! Your mail has send. ")
